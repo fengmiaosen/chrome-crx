@@ -1,0 +1,27 @@
+{
+  // Chrome18之后，应该都是2
+  "manifest_version": 2,
+  "name": "极简天气demo",
+  "description": "极简天气预报demo",
+  "version": "1.0",
+  "icons": {
+    "16": "images/sun16.png",
+    "48": "images/sun48.png",
+    "128": "images/sun128.png"
+  },
+  // 指定扩展在Chrome工具栏中的显示信息，指定图标、标题、对应的页面
+  "browser_action": {
+    "default_icon": "images/sun48.png",
+    "default_title": "天气预报",
+    "default_popup": "popup.html"
+  },
+  // 放宽默认策略 （关于放宽默认策略更多的介绍，可以访问Content Security Policy Reference来获取），通过添加 'unsafe-eval' 来实现
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  // 跨域的权限
+  "permissions": [
+    "https://api.heweather.com/x3/citylist?search=allchina&key=*",
+    "http://api.openweathermap.org/data/2.5/forecast?q=*",
+    "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json"
+  ]
+
+}

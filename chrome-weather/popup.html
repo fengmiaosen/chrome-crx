@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>天气</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="weather">
+        <div class="today" id="today">
+            <h1 class="city">杭州</h1>
+            <div class="row_detail"><img src="http://files.heweather.com/cond_icon/104.png">
+                <h1>19<span>℃</span></h1></div>
+            <div class="wind">
+                <h2>阴</h2>
+                <h4>风速 20   湿度 89%</h4></div>
+        </div>
+        <div class="content">
+            <div class="wrap" id="wrap">
+                <div class="row">
+                    <h4>2016-05-16</h4><img src="http://files.heweather.com/cond_icon/104.png">
+                    <h1>19~24</h1>
+                    <h4>阴</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id='today_tpl' type="text/template">
+      <h1 class="city"><%=city%> </h1>
+      <div class="row_detail">
+        <img src="<%=cond_info[now.cond.code]%>" />
+        <h1><%=now.tmp%> <span>℃</span></h1>
+      </div>
+      <div class="wind">
+        <h2><%=now.cond.txt%> </h2>
+        <h4>风速 <%=now.wind.spd%>  湿度  <%=now.hum%> %</h4>
+      </div>
+    </script>
+    <script id='daily_tpl' type="text/template">
+      <%for(var i=0;i< daily.length;i++){%>
+        <div class="row">
+          <h4><%=daily[i].date%></h4>
+          <img src="<%=cond_info[daily[i].cond.code_d]%>" />
+          <h1><%=daily[i].tmp.min%> ~ <%=daily[i].tmp.max%> </h1>
+          <h4><%=daily[i].cond.txt_d%> </h4>
+        </div>
+      <%}%>
+    </script>
+    <script src="js/baiduTemplate.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html>
